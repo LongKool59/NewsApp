@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsApp", "NewsApp\NewsApp.csproj", "{518B9E2C-B479-4CAD-8F55-7EBD4D59599F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsApp.DataAccessor", "NewsApp.DataAccessor\NewsApp.DataAccessor.csproj", "{9B7DB001-AF8D-4F4E-840A-29ED1B766686}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{518B9E2C-B479-4CAD-8F55-7EBD4D59599F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{518B9E2C-B479-4CAD-8F55-7EBD4D59599F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{518B9E2C-B479-4CAD-8F55-7EBD4D59599F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{518B9E2C-B479-4CAD-8F55-7EBD4D59599F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B7DB001-AF8D-4F4E-840A-29ED1B766686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7DB001-AF8D-4F4E-840A-29ED1B766686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7DB001-AF8D-4F4E-840A-29ED1B766686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7DB001-AF8D-4F4E-840A-29ED1B766686}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E08F4712-AE14-4E38-AB2F-EE232315CCF4}
+	EndGlobalSection
+EndGlobal
