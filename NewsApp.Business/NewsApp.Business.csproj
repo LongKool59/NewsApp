@@ -12,4 +12,8 @@
 		<ProjectReference Include="..\NewsApp.DataAccessor\NewsApp.DataAccessor.csproj" />
 		<ProjectReference Include="..\NewsApp.Contracts\NewsApp.Contracts.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Interfaces\" />
+	  <Folder Include="Services\" />
+	</ItemGroup>
 </Project>
