@@ -1,4 +1,5 @@
 using AutoMapper;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NewsApp.DataAccessor.Data;
 using NewsApp.DataAccessor.Entities;
+using NewsApp.Filters;
 using System.Reflection;
 using System.Text;
 
@@ -73,7 +75,15 @@ builder.Services.AddSwaggerGen(c =>
                       }
                     });
 });
-
+builder.Services.AddControllers(x =>
+{
+    x.Filters.Add(typeof(ValidatorActionFilter));
+})
+.AddFluentValidation(fv =>
+{
+    fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+    fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
