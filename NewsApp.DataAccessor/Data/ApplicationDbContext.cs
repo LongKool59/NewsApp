@@ -18,6 +18,10 @@ namespace NewsApp.DataAccessor.Data
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Comments> Comments { get; set; }
+        public DbSet<News> News { get; set; }
+        public DbSet<Pictures> Pictures { get; set; }
+        public DbSet<Entities.Type> Types { get; set; }
 
     }
 }
