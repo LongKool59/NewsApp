@@ -17,7 +17,10 @@ namespace NewsApp.Business
         {
             CreateMap<UserDto, User>()
                 .ForMember(dest=>dest.Id,o=>o.MapFrom(src=>src.Id))
-                .ForMember(dest => dest.UserName, o => o.MapFrom(src => src.UserName));
+                .ForMember(dest => dest.UserName, o => o.MapFrom(src => src.UserName))
+                .ForMember(dest => dest.LastName, o => o.MapFrom(src => src.LastName))
+                .ForMember(dest => dest.FirstName, o => o.MapFrom(src => src.FirstName))
+                .ForMember(dest => dest.DateOfBirth, o => o.MapFrom(src => src.DateOfBirth));
             CreateMap<CommentsDto, Comments>();
             CreateMap<NewsDto, News>();
             CreateMap<TypeDto, DataAccessor.Entities.Type>();
@@ -31,7 +34,10 @@ namespace NewsApp.Business
         {
             CreateMap<User, UserDto>()
                 .ForMember(dest => dest.Id, o => o.MapFrom(src => src.Id))
-                .ForMember(dest => dest.UserName, o => o.MapFrom(src => src.UserName));
+                .ForMember(dest => dest.UserName, o => o.MapFrom(src => src.UserName))
+                .ForMember(dest => dest.LastName, o => o.MapFrom(src => src.LastName))
+                .ForMember(dest => dest.FirstName, o => o.MapFrom(src => src.FirstName))
+                .ForMember(dest => dest.DateOfBirth, o => o.MapFrom(src => src.DateOfBirth));
             CreateMap<Comments, CommentsDto>();
             CreateMap<News, NewsDto>();
             CreateMap<DataAccessor.Entities.Type, TypeDto>();
