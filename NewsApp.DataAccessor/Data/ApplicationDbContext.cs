@@ -15,6 +15,17 @@ namespace NewsApp.DataAccessor.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+        
+            builder.Entity<Entities.Type>()
+            .HasData(
+                new Entities.Type
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "test",
+                    Desc="day la test, can thi bo sung trong code"
+                }
+                
+            );
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }

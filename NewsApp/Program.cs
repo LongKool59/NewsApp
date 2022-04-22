@@ -85,7 +85,7 @@ builder.Services.AddControllers(x =>
     fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
 });
 var app = builder.Build();
-
+var applicationBuilder = builder.Services.BuildServiceProvider();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -115,4 +115,16 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+//auto migration 
+var serviceScopeFactory = applicationBuilder.GetRequiredService<IServiceScopeFactory>();
+using (var serviceScope = serviceScopeFactory.CreateScope())
+{
+    var dbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+    if (!dbContext.Database.CanConnect())
+    {
+        dbContext.Database.Migrate();
+    }
+
+}
 app.Run();
+

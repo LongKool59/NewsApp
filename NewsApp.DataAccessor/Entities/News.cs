@@ -15,6 +15,7 @@ namespace NewsApp.DataAccessor.Entities
         public string Content { get; set; }
         public Guid TypeID { get; set; }
         public Type Type { get; set; }
+        public string AuthorName { get; set; }
         public IEnumerable<Pictures> Pictures { get; set; }
         public IEnumerable<Comments> Comments { get; set; }
 

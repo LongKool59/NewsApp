@@ -13,6 +13,8 @@ namespace NewsApp.Business.Interfaces
         Task<T> GetByIdAsync(object id);
 
         Task<T> GetByAsync(Expression<Func<T, bool>> filter = null, string includeProperties = "");
+        Task<IEnumerable<T>> GetAllByAsync(Expression<Func<T, bool>> filter = null, string includeProperties = "");
+
 
         Task<IEnumerable<T>> GetAllAsync();
 

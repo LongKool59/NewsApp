@@ -12,8 +12,6 @@ namespace NewsApp.DataAccessor.Entities
 
         public DateTime UpdatedDate { get; set; }
 
-        public Guid? CreatorId { get; set; }
-
         public bool Published { get; set; }
     }
 }
