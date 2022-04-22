@@ -30,6 +30,7 @@ namespace NewsApp.Business.Services
         public async Task<PagedResponseModel<NewsDto>> PagedQueryAsync(string keySearch, int page, int limit)
         {
             var query = _baseRepository.Entities;
+            query = query.Where(m => m.Published == true);
             var news = await query
                .AsNoTracking()
                .PaginateAsync(page, limit);
@@ -45,7 +46,7 @@ namespace NewsApp.Business.Services
 
         public async Task<IEnumerable<NewsDto>> GetAllAsync()
         {
-            return _mapper.Map<IEnumerable<NewsDto>>(await _baseRepository.GetAllByAsync(m=>true, "Type, User, "));
+            return _mapper.Map<IEnumerable<NewsDto>>(await _baseRepository.GetAllByAsync(m=>true, "Type,Comments,Comments.User"));
         }
 
         public async Task<NewsDto> GetByIdAsync(Guid id)

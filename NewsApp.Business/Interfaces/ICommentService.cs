@@ -11,14 +11,8 @@ namespace NewsApp.Business.Interfaces
     public interface ICommentService
     {
         Task AddAsync(CommentsDto commentDto);
-
-        Task<PagedResponseModel<CommentsDto>> PagedQueryAsync(string keySearch,int page, int limit);
-
-        Task<IEnumerable<CommentsDto>> GetAllAsync();
-
-        Task<CommentsDto> GetByIdAsync(Guid id);
+        Task<PagedResponseModel<CommentsDto>> GetAllCommentByNewsAsync(int page, int limit);
         Task UpdateAsync(CommentsDto commentDto);
-
         Task DeleteAsync(CommentsDto commentDto);
     }
 }
