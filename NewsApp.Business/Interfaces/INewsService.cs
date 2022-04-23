@@ -12,7 +12,7 @@ namespace NewsApp.Business.Interfaces
     {
         Task AddAsync(NewsDto newsDto);
 
-        Task<PagedResponseModel<NewsDto>> PagedQueryAsync(string keySearch,int page, int limit);
+        Task<PagedResponseModel<NewsDto>> PagedQueryAsync(PageFilter filter);
 
         Task<IEnumerable<NewsDto>> GetAllAsync();
 

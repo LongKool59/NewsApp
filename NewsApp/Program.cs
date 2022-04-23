@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
+using NewsApp.Business;
 using NewsApp.DataAccessor.Data;
 using NewsApp.DataAccessor.Entities;
 using NewsApp.Filters;
@@ -75,6 +77,8 @@ builder.Services.AddSwaggerGen(c =>
                       }
                     });
 });
+builder.Services.AddBusinessLayer(configuration);
+
 builder.Services.AddControllers(x =>
 {
     x.Filters.Add(typeof(ValidatorActionFilter));

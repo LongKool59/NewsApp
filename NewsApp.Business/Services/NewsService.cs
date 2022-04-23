@@ -27,13 +27,14 @@ namespace NewsApp.Business.Services
             await _baseRepository.AddAsync(news);
         }
 
-        public async Task<PagedResponseModel<NewsDto>> PagedQueryAsync(string keySearch, int page, int limit)
+        public async Task<PagedResponseModel<NewsDto>> PagedQueryAsync(PageFilter filter)
         {
             var query = _baseRepository.Entities;
             query = query.Where(m => m.Published == true);
+            query =query.Where(m=>string.IsNullOrWhiteSpace(filter.keySearch)||m.Title.Contains(filter.keySearch));
             var news = await query
                .AsNoTracking()
-               .PaginateAsync(page, limit);
+               .PaginateAsync(filter.page, filter.limit);
 
             return new PagedResponseModel<NewsDto>
             {

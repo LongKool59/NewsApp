@@ -27,13 +27,13 @@ namespace NewsApp.Business.Services
             var comments = _mapper.Map<Comments>(commentDto);
             await _baseRepository.AddAsync(comments);
         }
-        public async Task<PagedResponseModel<CommentsDto>> GetAllCommentByNewsAsync(int page, int limit)
+        public async Task<PagedResponseModel<CommentsDto>> GetAllCommentByNewsAsync(PageFilter filter)
         {
             var query = _baseRepository.Entities;
             query=query.Where(m=>m.Published==true);
             var comments = await query
                .AsNoTracking()
-               .PaginateAsync(page, limit);
+               .PaginateAsync(filter.page, filter.limit);
 
             return new PagedResponseModel<CommentsDto>
             {
