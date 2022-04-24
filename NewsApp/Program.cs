@@ -78,7 +78,7 @@ builder.Services.AddSwaggerGen(c =>
                     });
 });
 builder.Services.AddBusinessLayer(configuration);
-
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddControllers(x =>
 {
     x.Filters.Add(typeof(ValidatorActionFilter));

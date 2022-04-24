@@ -47,7 +47,7 @@ namespace NewsApp.Business.Services
 
         public async Task<IEnumerable<NewsDto>> GetAllAsync()
         {
-            return _mapper.Map<IEnumerable<NewsDto>>(await _baseRepository.GetAllByAsync(m=>true, "Type,Comments,Comments.User"));
+            return _mapper.Map<IEnumerable<NewsDto>>(await _baseRepository.GetAllByAsync(m=>true, "Comments,Comments.User,Pictures,Type"));
         }
 
         public async Task<NewsDto> GetByIdAsync(Guid id)

@@ -10,9 +10,9 @@ namespace NewsApp.Business.Interfaces
 {
     public interface ICommentService
     {
-        Task AddAsync(CommentsDto commentDto);
+        Task AddAsync(AddCommentDto commentDto);
         Task<PagedResponseModel<CommentsDto>> GetAllCommentByNewsAsync(PageFilter filter);
-        Task UpdateAsync(CommentsDto commentDto);
+        Task UpdateAsync(EditCommentDto commentDto);
         Task DeleteAsync(CommentsDto commentDto);
     }
 }

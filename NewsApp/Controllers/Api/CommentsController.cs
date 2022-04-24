@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NewsApp.Business.Interfaces;
 using NewsApp.Contracts;
 using NewsApp.Contracts.Dtos;
@@ -8,6 +9,7 @@ namespace NewsApp.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CommentsController : ControllerBase
     {
         private readonly ICommentService _commentService;
@@ -16,17 +18,35 @@ namespace NewsApp.Controllers.Api
             _commentService = commentService;   
         }
         // GET: api/<NewsController>
-        [HttpGet]
-        public async Task<PagedResponseModel<CommentsDto>> GetAllNewsAsync(PageFilter filter)
+        [HttpGet("find")]
+        public async Task<PagedResponseModel<CommentsDto>> GetAllNewsAsync([FromRoute]PageFilter filter)
         {
             return await _commentService.GetAllCommentByNewsAsync(filter);
         }
 
         // GET api/<NewsController>/5
-        /*[HttpGet("{id}")]
-        public async Task<NewsDto> Get(Guid id)
+        [HttpPost("add")]
+        public async Task<ActionResult> AddCommment(AddCommentDto addComment)
         {
-*//*            return await _commentService.GetByIdAsync(id);
-*//*        }*/
+            if(ModelState.IsValid)
+            { 
+                await _commentService.AddAsync(addComment);
+                return Ok();
+
+            }
+            return StatusCode(500, "Error");
+        }
+        [HttpPost("edit")]
+        public async Task<ActionResult> AddCommment(EditCommentDto editComment)
+        {
+            var UserId = new Guid(User.Claims.FirstOrDefault(x => x.Type == "sub").Value);
+            if (ModelState.IsValid&&UserId== editComment.UserId)
+            {
+                await _commentService.UpdateAsync(editComment);
+                return Ok();
+
+            }
+            return StatusCode(500, "Error");
+        }
     }
 }

@@ -22,9 +22,13 @@ namespace NewsApp.Business.Services
             _baseRepository = baseRepository;
             _mapper = mapper;
         }
-        public async Task AddAsync(CommentsDto commentDto)
+        public async Task AddAsync(AddCommentDto commentDto)
         {
             var comments = _mapper.Map<Comments>(commentDto);
+            comments.UpdatedDate = DateTime.Now;
+            comments.CreatedDate = DateTime.Now;
+            comments.Id= Guid.NewGuid();
+            comments.Published = true;
             await _baseRepository.AddAsync(comments);
         }
         public async Task<PagedResponseModel<CommentsDto>> GetAllCommentByNewsAsync(PageFilter filter)
@@ -43,9 +47,11 @@ namespace NewsApp.Business.Services
                 Items = _mapper.Map<IEnumerable<CommentsDto>>(comments.Items)
             };
         }
-        public Task UpdateAsync(CommentsDto commentDto)
+        public async Task UpdateAsync(EditCommentDto commentDto)
         {
-            return Task.CompletedTask;
+            var cmt = await _baseRepository.GetByAsync(m=>m.Id==commentDto.Id&&m.UserId==commentDto.UserId,"");
+            cmt.Comment = commentDto.Comment;
+            await _baseRepository.UpdateAsync(cmt);
         }
         public async Task DeleteAsync(CommentsDto commentDto)
         {

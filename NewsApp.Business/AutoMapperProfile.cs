@@ -22,6 +22,8 @@ namespace NewsApp.Business
                 .ForMember(dest => dest.FirstName, o => o.MapFrom(src => src.FirstName))
                 .ForMember(dest => dest.DateOfBirth, o => o.MapFrom(src => src.DateOfBirth));
             CreateMap<CommentsDto, Comments>();
+            CreateMap<AddCommentDto, Comments>();
+
             CreateMap<NewsDto, News>();
             CreateMap<TypeDto, DataAccessor.Entities.Type>();
             CreateMap<PicturesDto, Pictures>();

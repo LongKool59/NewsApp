@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace NewsApp.Contracts.Dtos
 {
-    public class TypeDto:BaseDto
+    public class EditCommentDto
     {
         [Required]
-        [StringLength(maximumLength: 200)]
-        public string Name { get; set; }
+        public Guid Id { get; set; }
         [Required]
-        [StringLength(maximumLength: 100)]
-        public string Desc { get; set; }
+        public Guid UserId { get; set; }
+        [Required]
+        public string Comment { get; set; }
     }
 }

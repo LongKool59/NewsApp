@@ -10,6 +10,5 @@ namespace NewsApp.Contracts.Dtos
     {
         public string Name { get; set; }
         public string Link { get; set; }
-        public NewsDto News { get; set; }
     }
 }
