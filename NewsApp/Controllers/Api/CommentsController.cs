@@ -9,7 +9,6 @@ namespace NewsApp.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class CommentsController : ControllerBase
     {
         private readonly ICommentService _commentService;
@@ -25,6 +24,7 @@ namespace NewsApp.Controllers.Api
         }
 
         // GET api/<NewsController>/5
+        [Authorize]
         [HttpPost("add")]
         public async Task<ActionResult> AddCommment(AddCommentDto addComment)
         {
@@ -36,6 +36,7 @@ namespace NewsApp.Controllers.Api
             }
             return StatusCode(500, "Error");
         }
+        [Authorize]
         [HttpPost("edit")]
         public async Task<ActionResult> AddCommment(EditCommentDto editComment)
         {
